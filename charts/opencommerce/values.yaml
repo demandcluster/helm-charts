@@ -79,7 +79,7 @@ api:
     repository: reactioncommerce/reaction
     tag: 4.0.3
     pullPolicy: Always
-    #imagePullSecret:
+    # imagePullSecret:
   service:
     annotations: {}
     type: ClusterIP
@@ -104,7 +104,7 @@ storefront:
     repository: reactioncommerce/example-storefront
     tag: 5.0.3
     pullPolicy: IfNotPresent
-    #imagePullSecret:
+    # imagePullSecret:
   service:
     annotations: {}
     type: ClusterIP
