@@ -78,7 +78,7 @@ api:
   image:
     repository: reactioncommerce/reaction
     tag: 4.0.3
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
     # imagePullSecret:
   service:
     annotations: {}
@@ -96,7 +96,7 @@ api:
 ## Example storefront configuration
 storefront:
   enabled: true
-  host: localhost
+  host: example.shop
   ssl: PUBLIC_FILES_BASE_URL
   replicaCount: 1
   sessionSecret: CHANGEME
