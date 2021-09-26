@@ -39,4 +39,5 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
+        uses: HexF/chart-testing-action@v3.0.0
         run: ct install --chart-repos https://charts.bitnami.com/bitnami --all
