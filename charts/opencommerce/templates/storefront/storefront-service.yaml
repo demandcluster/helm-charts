@@ -1,0 +1,26 @@
+{{- if .Values.storefront.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "opencommerce.fullname" . }}-storefront
+  labels:
+    app: {{ template "opencommerce.name" . }}
+    component: storefront
+    chart: {{ template "opencommerce.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  annotations:
+  {{- if .Values.storefront.service.annotations }}
+{{ toYaml .Values.storefront.service.annotations | trim | indent 4 }}
+  {{- end }}
+spec:
+  type: {{ .Values.storefront.service.type }}
+  selector:
+    app: {{ template "opencommerce.name" . }}
+    component: storefront
+    release: {{ .Release.Name }}
+  ports:
+    - name: "storefront"
+      port: 4000
+      targetPort: 4000
+{{- end }}

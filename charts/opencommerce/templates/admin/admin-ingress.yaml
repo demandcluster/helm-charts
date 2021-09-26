@@ -1,0 +1,36 @@
+{{- if .Values.admin.enabled -}}
+{{- if .Values.admin.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ template "opencommerce.fullname" . }}-admin
+  labels:
+    app: {{ template "opencommerce.name" . }}
+    component: admin
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  annotations:
+    {{ range $key, $value := .Values.admin.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+spec:
+{{- if .Values.admin.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        - {{ .Values.admin.host }}
+      secretName: {{ .Values.admin.ingress.tls.secretName }}
+{{- end }}
+  rules:
+    - http:
+        paths:
+          - path: {{ .Values.admin.ingress.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ template "opencommerce.fullname" . }}-admin
+                port:
+                  number: 4080
+      host: {{ .Values.admin.host }}
+{{- end }}
+{{- end }}

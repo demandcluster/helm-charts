@@ -1,0 +1,44 @@
+{{- if .Values.storefront.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ template "opencommerce.name" . }}
+    component: storefront
+    chart: {{ template "opencommerce.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  name: {{ template "opencommerce.fullname" . }}-storefront
+  namespace: {{ .Release.Namespace | quote }} 
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "opencommerce.name" . }}
+      component: storefront
+      release: {{ .Release.Name }}
+  replicas: {{ .Values.storefront.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "opencommerce.name" . }}
+        component: storefront
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        {{- if .Values.storefront.image.imagePullSecret }}
+        imagePullSecrets:
+          - name: {{ .Values.storefront.image.imagePullSecret }}
+        {{- end }}
+        - name: {{ .Chart.Name }}-storefront
+          image: "{{ .Values.storefront.image.repository }}:{{ .Values.storefront.image.tag }}"
+          imagePullPolicy: {{ .Values.storefront.image.pullPolicy }}
+          ports:
+            - name: storefront
+              containerPort: 4000
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: {{ template "opencommerce.fullname" . }}
+            - configMapRef:
+                name: {{ template "opencommerce.fullname" . }}-storefront
+{{- end }}
