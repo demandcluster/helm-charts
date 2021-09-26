@@ -1,0 +1,26 @@
+{{- if .Values.api.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "opencommerce.fullname" . }}-api
+  labels:
+    app: {{ template "opencommerce.name" . }}
+    component: api
+    chart: {{ template "opencommerce.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  annotations:
+  {{- if .Values.api.service.annotations }}
+{{ toYaml .Values.api.service.annotations | trim | indent 4 }}
+  {{- end }}
+spec:
+  type: {{ .Values.api.service.type }}
+  selector:
+    app: {{ template "opencommerce.name" . }}
+    component: api
+    release: {{ .Release.Name }}
+  ports:
+    - name: "api"
+      port: 3000
+      targetPort: 3000
+{{- end }}

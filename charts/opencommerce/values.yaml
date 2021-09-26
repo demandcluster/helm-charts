@@ -1,0 +1,137 @@
+##
+## Global configuration
+global:
+  ##
+  ## The Stripe secret key from your Stripe account dashboard.
+  ## Required if you want Stripe payments to work.
+  stripeKey: YOUR_PRIVATE_STRIPE_API_KEY
+
+  ##
+  ## Set this if you want to track storefront analytics such as
+  ## page views with Segment. You can find this key on your Segment dashboard.
+  segmentKey: YOUR_PRIVATE_SEGMENT_API_KEY
+
+  ##
+  ## The MongoDB database URL.
+  ## Note: This overrides the Mongo subchart values i.e. bring your own
+  # mongoUrl:
+
+  ##
+  ## The oplog URL for the MongoDB deployment.
+  ## Note: This overrides the Mongo subchart values i.e. bring your own
+  # mongoOplogUrl:
+
+  ##
+  ## The Postgres database URL.
+  ## Note: This overrides the Postgres subchart values i.e. bring your own
+  # postgresUrl: postgres://<username>:<password>@example_rds.amazonaws.com:5432/hydra_database_name
+
+##
+## Admin panel configuration
+admin:
+  enabled: true
+  ssl: false
+  host: admin.example.shop
+  replicaCount: 1
+  image:
+    repository: reactioncommerce/admin
+    tag: 4.0.0-beta.7
+    pullPolicy: IfNotPresent
+    # imagePullSecret:
+  service:
+    annotations: {}
+    type: ClusterIP
+  ingress:
+    enabled: true
+    path: "/"
+    annotations: {}
+    livenessPath:
+    tls:
+      enabled: false
+      secretName: tls-secret
+
+##
+## API configuration
+api:
+  enabled: true
+  host: api.example.shop
+  ssl: false
+  replicaCount: 1
+
+  ##
+  ## Serve the GraphQL Playground UI from /graphql
+  # enableGraphQlPlayground: false
+
+  ##
+  ## Allow introspection of the GraphQL API.
+  # enableGraphQlIntrospection: false
+
+  ##
+  ## An SMTP mail url, e.g. smtp://user:pass@example.com:465, that is
+  ## used to send all transactional emails from the email-smtp plugin.
+  # mailUrl: smtp://user:pass@example.com:465
+
+  ##
+  ## If this is true, on startup the API will auto-initialize a MongoDB
+  ## replica set if one isn't found.
+  # initReplicaSet: false
+  image:
+    repository: reactioncommerce/reaction
+    tag: 4.0.3
+    pullPolicy: Always
+    # imagePullSecret:
+  service:
+    annotations: {}
+    type: ClusterIP
+  ingress:
+    enabled: true
+    path: "/"
+    annotations: {}
+    livenessPath:
+    tls:
+      enabled: false
+      secretName: tls-secret
+
+##
+## Example storefront configuration
+storefront:
+  enabled: true
+  host: localhost
+  ssl: PUBLIC_FILES_BASE_URL
+  replicaCount: 1
+  sessionSecret: CHANGEME
+  image:
+    repository: reactioncommerce/example-storefront
+    tag: 5.0.3
+    pullPolicy: IfNotPresent
+    # imagePullSecret:
+  service:
+    annotations: {}
+    type: ClusterIP
+  ingress:
+    enabled: true
+    path: "/"
+    annotations: {}
+    livenessPath:
+    tls:
+      enabled: true
+      secretName: tls-secret
+
+##
+## MongoDB chart configuration
+mongodb:
+  enabled: true
+  usePassword: true
+  # existingSecret: name-of-existing-secret
+  mongodbRootPassword: opencommerce
+  service:
+    annotations: {}
+    type: ClusterIP
+    port: 27017
+  replicaSet:
+    enabled: true
+    useHostnames: true
+    name: rs0
+    replicas:
+      secondary: 1
+      arbiter: 1
