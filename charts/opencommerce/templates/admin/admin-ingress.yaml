@@ -27,10 +27,8 @@ spec:
           - path: {{ .Values.admin.ingress.path }}
             pathType: Prefix
             backend:
-              service:
-                name: {{ template "opencommerce.fullname" . }}-admin
-                port:
-                  number: 4080
+              serviceName: {{ template "opencommerce.fullname" . }}-admin
+              servicePort: 4080
       host: {{ .Values.admin.host }}
 {{- end }}
 {{- end }}
