@@ -24,4 +24,5 @@ data:
   REACTION_IDENTITY_PUBLIC_PASSWORD_RESET_URL: "https://obsolete.example.com"
   REACTION_IDENTITY_PUBLIC_VERIFY_EMAIL_URL: "https://obsolete.example.com"
   REACTION_ADMIN_PUBLIC_ACCOUNT_REGISTRATION_URL: "https://obsolete.example.com"
+
 {{- end }}
