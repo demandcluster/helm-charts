@@ -3,6 +3,29 @@ entries:
   opencommerce:
   - apiVersion: v2
     appVersion: 4.0.3
+    created: "2021-09-27T18:14:38.589993995Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 10.26.3
+    description: Mailchimp Open Commerce is an API-first, modular commerce stack.
+    digest: 4241a3d6f31cd8f83645bf1b8e80323b70e50b4777fa78154d32e492aae42f47
+    icon: https://avatars.githubusercontent.com/u/66892924?s=200&v=4
+    maintainers:
+    - email: ron@demandcluster.com
+      name: DemandCluster
+    name: opencommerce
+    sources:
+    - https://github.com/reactioncommerce/reaction
+    - https://github.com/reactioncommerce/reaction-admin
+    - https://github.com/reactioncommerce/example-storefront
+    type: application
+    urls:
+    - https://github.com/demandcluster/helm-charts/releases/download/opencommerce-0.0.8/opencommerce-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
+    appVersion: 4.0.3
     created: "2021-09-27T16:25:44.928157446Z"
     dependencies:
     - condition: mongodb.enabled
@@ -116,4 +139,4 @@ entries:
     urls:
     - https://github.com/demandcluster/helm-charts/releases/download/opencommerce-0.0.2/opencommerce-0.0.2.tgz
     version: 0.0.2
-generated: "2021-09-27T16:25:44.928178246Z"
+generated: "2021-09-27T18:14:38.590019296Z"
