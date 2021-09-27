@@ -8,3 +8,4 @@ The Helm chart is based on https://github.com/merchstack/reaction-oss-helm-chart
 ## Introduction
 
 This chart bootstraps a [Open Commerce](https://mailchimp.com/developer/open-commerce/) deployment.
+
