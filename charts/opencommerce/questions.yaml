@@ -207,7 +207,7 @@ questions:
         required: true
         label: Arbiter
         show_if: "global.usemongo=false"
-      - variable: mongodb.persistence
+      - variable: mongodb.persistence.enabled
         description: "Create a PV"
         type: boolean
         default: true
