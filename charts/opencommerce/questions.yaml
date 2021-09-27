@@ -156,7 +156,7 @@ questions:
     required: true
     group: "Mongo Settings"
     label: External Mongo
-    show_subquestions_if: true
+    show_subquestion_if: true
     subquestions:
       - variable: global.mongoUrl
         description: "The MongoDB database URL. Note: This overrides the Mongo subchart values i.e. bring your own"
