@@ -23,10 +23,6 @@ jobs:
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.1.0
 
-      - name: Set up chart-testing (tweak for helm v3)
-        uses: HexF/chart-testing-action@v3.0.0
-        with:
-          command: lint
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
@@ -43,4 +39,6 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        run: ct install --chart-repos https://charts.bitnami.com/bitnami --all
+        uses: HexF/chart-testing-action@v3.0.0
+        with:
+          command: install --chart-repos https://charts.bitnami.com/bitnami --all
