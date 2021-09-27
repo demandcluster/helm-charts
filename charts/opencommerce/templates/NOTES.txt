@@ -1,5 +1,9 @@
 Congratulations. You have just deployed Mailchimp Open Commerce!
 
+Open Commerce Version: {{ .Chart.AppVersion }}
+Helm Chart Version: {{ .Chart.Version }}
+
+
 If you have any questions regarding this chart or Mailchimp Open Commerce in general, feel free to contact us at hello@demandcluster.com
 
 External URLs:
