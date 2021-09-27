@@ -26,11 +26,9 @@ spec:
         paths:
           - path: {{ .Values.storefront.ingress.path }}
             pathType: Prefix
-            backend:
-              service:
-                name: {{ template "opencommerce.fullname" . }}-storefront
-                port:
-                  number: 4080
+            backend:      
+              serviceName: {{ template "opencommerce.fullname" . }}-storefront
+              servicePort: 4080          
       host: {{ .Values.storefront.host }}
 {{- end }}
 {{- end }}

@@ -1,6 +1,6 @@
 {{- if .Values.api.enabled -}}
 {{- if .Values.api.ingress.enabled -}}
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: {{ template "opencommerce.fullname" . }}-api
@@ -27,10 +27,8 @@ spec:
           - path: {{ .Values.api.ingress.path }}
             pathType: Prefix
             backend:
-              service:
-                name: {{ template "opencommerce.fullname" . }}-api
-                port:
-                  number: 3000 
+              serviceName: {{ template "opencommerce.fullname" . }}-api
+              servicePort: 3000 
       host: {{ .Values.api.host }}
 {{- end }}
 {{- end }}
