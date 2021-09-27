@@ -27,7 +27,6 @@ jobs:
         uses: HexF/chart-testing-action@v3.0.0
         with:
           command: lint
-
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
