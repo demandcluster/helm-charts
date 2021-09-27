@@ -11,10 +11,8 @@ global:
   ## page views with Segment. You can find this key on your Segment dashboard.
   segmentKey: YOUR_PRIVATE_SEGMENT_API_KEY
 
-  ##
   ## A secret token that you need to change
   tokenSecret: youNeedToChangeThis!
-  ##
   ## The MongoDB database URL.
   ## Note: This overrides the Mongo subchart values i.e. bring your own
   # mongoUrl:
@@ -72,6 +70,7 @@ api:
   ##
   ## If this is true, on startup the API will auto-initialize a MongoDB
   ## replica set if one isn't found.
+
   initReplicaSet: true
   image:
     repository: reactioncommerce/reaction
@@ -114,7 +113,6 @@ storefront:
     tls:
       enabled: true
       secretName: tls-secret
-
 ##
 ## MongoDB chart configuration
 mongodb:
