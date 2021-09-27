@@ -21,7 +21,7 @@ jobs:
           python-version: 3.7
 
       - name: Set up chart-testing
-        uses: helm/chart-testing-action@v2.1.0
+        uses: HexF/chart-testing-action@v3.0.0
 
       - name: Run chart-testing (list-changed)
         id: list-changed
@@ -39,5 +39,4 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        uses: HexF/chart-testing-action@v3.0.0
         run: ct install --chart-repos https://charts.bitnami.com/bitnami --all
