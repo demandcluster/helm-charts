@@ -11,7 +11,8 @@ global:
   ## page views with Segment. You can find this key on your Segment dashboard.
   segmentKey: YOUR_PRIVATE_SEGMENT_API_KEY
 
-  ##
+  ## A secret token that you need to change
+  tokenSecret: youNeedToChangeThis!
   ## The MongoDB database URL.
   ## Note: This overrides the Mongo subchart values i.e. bring your own
   # mongoUrl:
@@ -20,11 +21,6 @@ global:
   ## The oplog URL for the MongoDB deployment.
   ## Note: This overrides the Mongo subchart values i.e. bring your own
   # mongoOplogUrl:
-
-  ##
-  ## The Postgres database URL.
-  ## Note: This overrides the Postgres subchart values i.e. bring your own
-  # postgresUrl: postgres://<username>:<password>@example_rds.amazonaws.com:5432/hydra_database_name
 
 ##
 ## Admin panel configuration
@@ -74,11 +70,12 @@ api:
   ##
   ## If this is true, on startup the API will auto-initialize a MongoDB
   ## replica set if one isn't found.
-  # initReplicaSet: false
+
+  initReplicaSet: true
   image:
     repository: reactioncommerce/reaction
     tag: 4.0.3
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
     # imagePullSecret:
   service:
     annotations: {}
@@ -96,7 +93,7 @@ api:
 ## Example storefront configuration
 storefront:
   enabled: true
-  host: localhost
+  host: example.shop
   ssl: PUBLIC_FILES_BASE_URL
   replicaCount: 1
   sessionSecret: CHANGEME
@@ -116,22 +113,26 @@ storefront:
     tls:
       enabled: true
       secretName: tls-secret
-
 ##
 ## MongoDB chart configuration
 mongodb:
   enabled: true
-  usePassword: true
-  # existingSecret: name-of-existing-secret
-  mongodbRootPassword: opencommerce
+  auth:
+    enabled: true
+    rootPassword: reaction
+    rootUser: admin
+    username: reaction
+    password: reaction
+    database: reaction
+  architecture: replicaset
+  replicaSetName: rs0
+  replicaCount: 2
+  persistence:
+    enabled: true
+    size: 8Gi
+  arbiter:
+    enabled: true
   service:
     annotations: {}
     type: ClusterIP
     port: 27017
-  replicaSet:
-    enabled: true
-    useHostnames: true
-    name: rs0
-    replicas:
-      secondary: 1
-      arbiter: 1
