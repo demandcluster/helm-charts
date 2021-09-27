@@ -8,9 +8,3 @@ The Helm chart is based on https://github.com/merchstack/reaction-oss-helm-chart
 ## Introduction
 
 This chart bootstraps a [Open Commerce](https://mailchimp.com/developer/open-commerce/) deployment.
-
-## Prerequisites
-
-- Kubernetes 1.12+
-- Helm 3.1.0 
-- PV provisioner support in the underlying infrastructure
