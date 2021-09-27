@@ -154,7 +154,8 @@ questions:
     description: "Bring your own MongoDB?"
     type: boolean
     required: true
-    label: SelfHosted Mongo
+    group: "Mongo Settings"
+    label: External Mongo
     show_subquestions_if: true
     subquestions:
       - variable: global.mongoUrl
@@ -183,11 +184,13 @@ questions:
         max: 32
         type: password
         label: Mongo Root Password
+        show_if: "global.usemongo=false"
       - variable: mongodb.auth.rootUser
         description: "The MongoDB root user"
         default: reaction
         type: string
         label: Mongo Root User
+        show_if: "global.usemongo=false"
       - variable: mongodb.replicaCount
         description: "Replica count for the Mongo replica set"
         type: int
@@ -196,14 +199,18 @@ questions:
         min: 2
         max: 20
         label: Replica count
+        show_if: "global.usemongo=false"
       - variable: mongodb.arbiter
-        description: "Use the an arbiter (to get odd number of replica sets)"
+        description: "Use an arbiter (to get an odd number of replica sets)"
         type: boolean
         default: true
         required: true
         label: Arbiter
+        show_if: "global.usemongo=false"
       - variable: mongodb.persistence
         description: "Create a PV"
         type: boolean
         default: true
         label: PV
+        show_if: "global.usemongo=false"
+
