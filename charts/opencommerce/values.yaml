@@ -121,9 +121,6 @@ mongodb:
     enabled: true
     rootPassword: reaction
     rootUser: admin
-    username: reaction
-    password: reaction
-    database: reaction
   architecture: replicaset
   replicaSetName: rs0
   replicaCount: 2
