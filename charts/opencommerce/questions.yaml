@@ -166,7 +166,6 @@ questions:
         description: "The MongoDB Oplog URL. Note: This overrides the Mongo subchart values i.e. bring your own"
         type: string
         label: Mongo Oplog URL
-
   - variable: mongodb.enabled
     default: true
     description: "Enable MongoDB"
@@ -212,18 +211,17 @@ questions:
         type: boolean
         default: true
         label: PVC
-        show_if: "global.usemongo=false"
-        show_subquestion_if: true
-      subquestions:
-        - variable: mongodb.persistence.size
-          description: "PVC Size"
-          default: "8Gi"
-          label: PVC Size
-          type: string
-        - variable: mongodb.persistence.storageClass
-          default: ""
-          description: "If undefined or null, uses the default StorageClass. Default to null"
-          type: storageclass
-          label: Default storage class for Mongo PVC
-
+        show_if: "global.usemongo=false"e
+      - variable: mongodb.persistence.size
+        description: "PVC Size"
+        default: "8Gi"
+        label: PVC Size
+        type: string
+        show_if: "mongodb.persistence.enabled=true"
+      - variable: mongodb.persistence.storageClass
+        default: ""
+        description: "If undefined or null, uses the default StorageClass. Default to null"
+        type: storageclass
+        label: Default storage class for Mongo PVC
+        show_if: "mongodb.persistence.enabled=true"
 
