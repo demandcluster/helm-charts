@@ -46,9 +46,8 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ## Parameters
 
-WIP - Check the values.yaml file for now.
+`values.yaml`
 
-values.yaml
 ```yaml
 ##
 ## Global configuration
