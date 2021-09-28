@@ -127,6 +127,7 @@ mongodb:
   persistence:
     enabled: true
     size: 8Gi
+    storageClass: ""
   arbiter:
     enabled: true
   service:

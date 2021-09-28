@@ -200,17 +200,30 @@ questions:
         max: 20
         label: Replica count
         show_if: "global.usemongo=false"
-      - variable: mongodb.arbiter
+      - variable: mongodb.arbiter.enabled
         description: "Use an arbiter (to get an odd number of replica sets)"
         type: boolean
         default: true
         required: true
         label: Arbiter
         show_if: "global.usemongo=false"
-      - variable: mongodb.persistence
-        description: "Create a PV"
+      - variable: mongodb.persistence.enabled
+        description: "Create a Persistent Volume"
         type: boolean
         default: true
-        label: PV
+        label: PVC
         show_if: "global.usemongo=false"
+        show_subquestion_if: true
+      subquestions:
+        - variable: mongodb.persistence.size
+          description: "PVC Size"
+          default: "8Gi"
+          label: PVC Size
+          type: string
+        - variable: mongodb.persistence.storageClass
+          default: ""
+          description: "If undefined or null, uses the default StorageClass. Default to null"
+          type: storageclass
+          label: Default storage class for Mongo PVC
+
 
