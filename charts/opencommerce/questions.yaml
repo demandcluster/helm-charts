@@ -211,7 +211,7 @@ questions:
         type: boolean
         default: true
         label: PVC
-        show_if: "global.usemongo=false"
+        show_if: "global.usemongo=false"e
       - variable: mongodb.persistence.size
         description: "PVC Size"
         default: "8Gi"
@@ -224,3 +224,4 @@ questions:
         type: storageclass
         label: Default storage class for Mongo PVC
         show_if: "mongodb.persistence.enabled=true"
+
