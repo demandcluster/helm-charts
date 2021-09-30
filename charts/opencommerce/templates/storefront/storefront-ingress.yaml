@@ -10,7 +10,9 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
+
   annotations:
+    rancher.io/globalDNS.hostname: {{ .Values.storefront.host}}
     {{ range $key, $value := .Values.storefront.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
