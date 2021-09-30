@@ -11,6 +11,7 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   annotations:
+    rancher.io/globalDNS.hostname: {{ .Values.api.host}}
     {{ range $key, $value := .Values.api.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
