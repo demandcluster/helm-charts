@@ -71,7 +71,7 @@ api:
   ## If this is true, on startup the API will auto-initialize a MongoDB
   ## replica set if one isn't found.
 
-  initReplicaSet: true
+  initReplicaSet: false
   image:
     repository: reactioncommerce/reaction
     tag: 4.0.3
@@ -124,6 +124,7 @@ mongodb:
   architecture: replicaset
   replicaSetName: rs0
   replicaCount: 2
+  replicaSetHostnames: true
   persistence:
     enabled: true
     size: 8Gi
