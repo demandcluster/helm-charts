@@ -1,6 +1,6 @@
 {{- if .Values.admin.enabled -}}
 {{- if .Values.admin.ingress.enabled -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ template "opencommerce.fullname" . }}-admin
@@ -28,8 +28,10 @@ spec:
           - path: {{ .Values.admin.ingress.path }}
             pathType: Prefix
             backend:
-              serviceName: {{ template "opencommerce.fullname" . }}-admin
-              servicePort: 4080
+              service:
+                name: {{ template "opencommerce.fullname" . }}-admin
+                port:
+                  number: 4080
       host: {{ .Values.admin.host }}
 {{- end }}
 {{- end }}
