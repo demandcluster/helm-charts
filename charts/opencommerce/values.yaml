@@ -31,7 +31,7 @@ admin:
   replicaCount: 1
   image:
     repository: reactioncommerce/admin
-    tag: 4.0.0-beta.8
+    tag: 4.0.0-beta.12
     pullPolicy: IfNotPresent
     # imagePullSecret:
   service:
@@ -74,7 +74,7 @@ api:
   initReplicaSet: false
   image:
     repository: reactioncommerce/reaction
-    tag: 4.0.4
+    tag: 4.1.4
     pullPolicy: IfNotPresent
     # imagePullSecret:
   service:
@@ -99,7 +99,7 @@ storefront:
   sessionSecret: CHANGEME
   image:
     repository: reactioncommerce/example-storefront
-    tag: 5.0.3
+    tag: 5.1.0
     pullPolicy: IfNotPresent
     # imagePullSecret:
   service:
