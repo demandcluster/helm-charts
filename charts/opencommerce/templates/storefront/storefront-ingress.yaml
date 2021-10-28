@@ -32,7 +32,7 @@ spec:
               service:      
                 name: {{ template "opencommerce.fullname" . }}-storefront
                 port:
-                  number: 4080          
+                  number: 4000         
       host: {{ .Values.storefront.host }}
 {{- end }}
 {{- end }}
