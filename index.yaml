@@ -561,4 +561,23 @@ entries:
     urls:
     - https://github.com/demandcluster/helm-charts/releases/download/opencommerce-0.0.2/opencommerce-0.0.2.tgz
     version: 0.0.2
-generated: "2021-10-28T11:53:58.526899431Z"
+  typesense:
+  - apiVersion: v2
+    created: "2022-04-13T14:04:26.738846402Z"
+    description: Typesense is an open source, typo tolerant search engine that delivers
+      fast and relevant results out-of-the-box.
+    digest: 6019cf144c75c0f7990c0b45d6460fabaadba154964a5ea74c8eea580b0be486
+    home: https://typesense.org/
+    icon: https://typesense.org/assets/images/typesense_medium.png
+    keywords:
+    - search
+    maintainers:
+    - email: ron@demandcluster.com
+      name: Ron
+    name: typesense
+    sources:
+    - https://github.com/typesense/typesense
+    urls:
+    - https://github.com/demandcluster/helm-charts/releases/download/typesense-0.0.1/typesense-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-04-13T14:04:26.738999011Z"
