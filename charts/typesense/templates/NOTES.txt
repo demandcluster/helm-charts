@@ -1,0 +1,22 @@
+{{- if contains "nodePort" .Values.service.type }}
+
+  export typesense_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "typesense.fullname" . }})
+  export typesense_IP=$(kubectl get typesenses --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo "typesense app URL: http://$typesense_IP:$typesense_PORT/"
+
+{{- else if contains "LoadBalancer" .Values.service.type }}
+
+  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+        Watch the status with: 'kubectl get svc -w {{ template "typesense.fullname" . }} --namespace {{ .Release.Namespace }}'
+
+  export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ template "typesense.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
+  echo "typesense app URL: http://$SERVICE_IP/"
+
+{{- else if contains "ClusterIP"  .Values.service.type }}
+
+  To visit typesense locally:
+  kubectl port-forward --namespace {{ .Release.Namespace }} svc/{{ template "typesense.fullname" . }} 8080:{{ .Values.service.port }}
+
+  It will now be available at localhost:8080
+
+{{- end }}
