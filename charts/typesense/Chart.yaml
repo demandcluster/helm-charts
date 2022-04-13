@@ -1,6 +1,6 @@
 apiVersion: v2
 name: typesense
-version: 0.0.2
+version: 0.0.3
 description: Typesense is an open source, typo tolerant search engine that delivers fast and relevant results out-of-the-box.
 keywords:
   - search
