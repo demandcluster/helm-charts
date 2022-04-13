@@ -43,7 +43,6 @@ spec:
             {{- if .Values.extraEnv }}
             {{- toYaml .Values.extraEnv | nindent 12 }}
             {{- end }}
-          
           workingDir: /opt
           ports:
             - name: http
