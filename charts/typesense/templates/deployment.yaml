@@ -35,9 +35,9 @@ spec:
           {{- end }}
           env:
             - name: TYPESENSE_API_KEY
-              value: {{ .Values.apiKey}}
+              value: {{ .Values.apiKey }}
             - name: TYPESENSE_ENABLE_CORS
-              value: {{ .Values.enableCors }}
+              value: {{ quote .Values.enableCors }}
             - name: TYPESENSE_DATA_DIR
               value: {{ .Values.persistence.path }}
             {{- if .Values.extraEnv }}

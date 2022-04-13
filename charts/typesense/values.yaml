@@ -1,7 +1,7 @@
 ## typesense api key
 ## got no idea how to use k8s secrets here
 apiKey: MySuperSecretSecret
-enableCors: false
+enableCors: "false"
 ## typesense image version
 ## ref: https://hub.docker.com/r/typesense/typesense/
 ##
