@@ -34,16 +34,16 @@ spec:
           envFrom: {{- toYaml .Values.envFrom | nindent 12 }}
           {{- end }}
           env:
+            - name: TYPESENSE_API_KEY
+              value: {{ .Values.apiKey}}
+            - name: TYPESENSE_ENABLE_CORS
+              value: {{ .Values.enableCors }}
             - name: TYPESENSE_DATA_DIR
               value: {{ .Values.persistence.path }}
             {{- if .Values.extraEnv }}
             {{- toYaml .Values.extraEnv | nindent 12 }}
             {{- end }}
-          args: 
-              [
-                "--api-key= {{ .Values.apiKey }}",
-                "--enable-cors"
-              ]
+          
           workingDir: /opt
           ports:
             - name: http
