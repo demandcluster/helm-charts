@@ -41,7 +41,8 @@ spec:
             {{- end }}
           args: 
               [
-                "--api-key= {{ .Values.apiKey }}"
+                "--api-key= {{ .Values.apiKey }}",
+                "--enable-cors"
               ]
           workingDir: /opt
           ports:
