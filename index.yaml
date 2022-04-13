@@ -563,6 +563,24 @@ entries:
     version: 0.0.2
   typesense:
   - apiVersion: v2
+    created: "2022-04-13T17:23:48.825538038Z"
+    description: Typesense is an open source, typo tolerant search engine that delivers
+      fast and relevant results out-of-the-box.
+    digest: 20a8fbfe999d6533b9c71b2cd0456b52670c00cb093e094b003f241624f8d1bb
+    home: https://typesense.org/
+    icon: https://typesense.org/assets/images/typesense_medium.png
+    keywords:
+    - search
+    maintainers:
+    - email: ron@demandcluster.com
+      name: Ron
+    name: typesense
+    sources:
+    - https://github.com/typesense/typesense
+    urls:
+    - https://github.com/demandcluster/helm-charts/releases/download/typesense-0.0.4/typesense-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     created: "2022-04-13T16:50:25.036083297Z"
     description: Typesense is an open source, typo tolerant search engine that delivers
       fast and relevant results out-of-the-box.
@@ -616,4 +634,4 @@ entries:
     urls:
     - https://github.com/demandcluster/helm-charts/releases/download/typesense-0.0.1/typesense-0.0.1.tgz
     version: 0.0.1
-generated: "2022-04-13T16:50:25.036205299Z"
+generated: "2022-04-13T17:23:48.82570084Z"
